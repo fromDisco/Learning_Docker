@@ -140,7 +140,7 @@ docker run -p 80:80 -m=4m--restart unless-stopped -ti -d -v /home/user/Documents
 ## Docker attach
 
 ```console
-# connect to running container.
+# connect and execute command on running container. 
 # exit without stopping container
 # CTRL-P + CTRL-Q
 docker attach <container-id>
