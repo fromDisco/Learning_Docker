@@ -180,3 +180,20 @@ docker run -e password admin nginx
 # FLAG
 -e >os.env var< value
 ```
+
+## Docker push images to Docker Hub
+
+```console
+# EXAMPLE
+docker tag MyNewImage MyUserName/MyImage:v1
+docker login
+docker push MyUserName
+
+# Commands to push
+docker tag >TagName< >UserNameOnDockerHub</>ImageName<:>VersionOfImage<
+docker login (optional credentials)
+docker push >UserNameOnDockerHub</>ImageName<:>VersionOfImage<
+
+# Commands to pull
+docker pull MyUserName/MyImage:v1
+```
