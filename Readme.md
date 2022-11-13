@@ -83,6 +83,20 @@ docker container prune --filter "until=5m"
 docker logs <cointainer-id>
 ```
 
+## Docker build
+f06be4d
+## Docker build 
+```console 
+# builds image from Dockerfile and the context in this file 
+docker build -t my_name . 
+
+# FLAGS
+# choose name for image
+-t <my_name>
+# location of Dockerfile: e.g: . -> actual folder
+.
+```
+
 ## Docker run examples
 
 ```console
@@ -185,12 +199,16 @@ docker run -e password admin nginx
 
 ```console
 # EXAMPLE
-docker tag MyNewImage MyUserName/MyImage:v1
+# give MyNewImage a name that is published on dockerhub
+docker tag MyNewImage myusername/MyImage:1.0
+# cli login to dockerhub
 docker login
-docker push MyUserName
+# like git push. Push to myusername/imagename
+# username/imagename is the same as set with: docker tag ...
+docker push myusername/MyImage:1.0
 
 # Commands to push
-docker tag >TagName< >UserNameOnDockerHub</>ImageName<:>VersionOfImage<
+docker tag <TagName> <UserNameOnDockerHub>/<ImageName>:<VersionOfImage>
 docker login (optional credentials)
 docker push >UserNameOnDockerHub</>ImageName<:>VersionOfImage<
 
