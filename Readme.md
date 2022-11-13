@@ -200,6 +200,7 @@ docker run -e password admin nginx
 ```console
 # EXAMPLE
 # give MyNewImage a name that is published on dockerhub
+# username has to be lowercase on dockerhub
 docker tag MyNewImage myusername/MyImage:1.0
 # cli login to dockerhub
 docker login
@@ -208,9 +209,10 @@ docker login
 docker push myusername/MyImage:1.0
 
 # Commands to push
-docker tag <TagName> <UserNameOnDockerHub>/<ImageName>:<VersionOfImage>
+# <TargetImage> contains of <usernameondockerhub/ImageName>
+docker tag <SourceImage>[:Tag] <TargetImage>:[Tag]
 docker login (optional credentials)
-docker push >UserNameOnDockerHub</>ImageName<:>VersionOfImage<
+docker push <usernameondockerhub>/<ImageName>[:Tag]
 
 # Commands to pull
 docker pull MyUserName/MyImage:v1
