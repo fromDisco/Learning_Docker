@@ -83,6 +83,11 @@ docker container prune --filter "until=5m"
 docker logs <cointainer-id>
 ```
 
+```console
+# see the port which is running
+docker port <image-name> 
+```
+
 ## Docker build
 f06be4d
 ## Docker build 
@@ -110,6 +115,8 @@ docker run -it busybox sh
 -d
 # -interactive -tty (pseudo)
 -it
+# Publish: publish all exposed ports to random ports
+-P
 
 # EXAMPLE
 docker run -dit --name michelsbox busybox sh
@@ -129,6 +136,11 @@ docker run -dit –restart on-failure busybox sh
 
 # EXAMPLE
 docker run -dit --restart=unless-stopped busybox sh
+```
+
+```console
+# specify a custom port to which the client will forward connections to the container
+docker run -p <custom-port-num(e.g.8888:80)> <image name>
 ```
 
 ```console
