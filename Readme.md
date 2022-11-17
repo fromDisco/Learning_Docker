@@ -81,6 +81,8 @@ docker container prune --filter "until=5m"
 ```console
 # shows log of cointainer
 docker logs <cointainer-id>
+# shows log of container in attached mode (follow)
+docker logs -f <container-id>
 ```
 
 ```console
@@ -228,4 +230,39 @@ docker push <usernameondockerhub>/<ImageName>[:Tag]
 
 # Commands to pull
 docker pull MyUserName/MyImage:v1
+```
+
+# To be moved to another Readme
+## Create persistent database
+```console
+# create a database on your device
+# here we name the database todo-db
+# todo-db is the name of our volume
+docker volume create todo-db
+# run a container using the named database file
+docker run -dp 3000:3000 -v todo-db:/etc/todos <image-name>
+# inspect the created volume
+docker inspect <volume> 
+
+# FLAGS
+-v <volume-file>:<path/to/db/in/container>
+```
+
+```console
+# create a Working in container directory 
+# and bind local directory to it
+docker run -dp 3000:3000 -w /app -v "$(pwd):/app" \
+     node:12-alpine sh -c "yarn install && yarn run dev"
+
+# FLAGS
+# create Working directory. Directory is your choice.
+-w /app
+# bind local directory to Working directory
+# $(pwd) -- is the actual directory of the project
+# /app is the Working directory
+-v "$(pwd):/app
+
+# Example
+# bind db and mount at the same time
+docker run -dp 3000:3000 -w /app -v "$(pwd):/app" -v todo-db:/etc/todos node:12-alpine sh -c "yarn install && yarn run dev"
 ```
